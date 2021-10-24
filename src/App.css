@@ -1,0 +1,48 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user {
+  margin: 10px;
+  width: 300px;
+  max-width: 300px;
+}
+
+button {
+  all: unset;
+  margin: 10px;
+  background-color: thistle;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  box-shadow: 0px 1px 2px -1px, 0px 2px 4px -2px;
+}
+
+.createUser {
+  padding: 10px 15px;
+  background-color: honeydew;
+  border-radius: 5px;
+  box-shadow: 0px 1px 2px -1px, 0px 2px 4px -2px;
+}
+
+.createUser input {
+  margin-right: 10px;
+}
+
+.user,
+.count {
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  background-color: honeydew;
+  padding: 10px 20px;
+  border: 10px;
+  box-shadow: 0px 1px 2px -1px, 0px 2px 4px -2px;
+}

@@ -1,27 +1,26 @@
-import React, { useEffect } from "react";
+// 문제가 하나 있다. 1,2,3,4 까지 만들어주고. 1을 지워버리면. enxtId는 3이되는데. 이때 다시 만들면
+// 그 다음으로 만들어지는것도 4가 된다. 이것을 어떻게 해결해야할것인가/
 
-export function UserList({ users, onRemove, hello123, onToggle }) {
-  return (
-    <Users
-      users={users}
-      onRemove={onRemove}
-      hello={hello123}
-      onToggle={onToggle}
-    ></Users>
-  );
+import React, { useContext, useEffect } from "react";
+import { UserDispatch } from "./App";
+
+export function UserList({ users }) {
+  return <Users users={users}></Users>;
 }
 
-// {users onRemove}
+// {users onDelete}
 
-const Users = React.memo(function Users({ users, onRemove, hello, onToggle }) {
+const Users = React.memo(function Users({ users }) {
   useEffect(() => {
     console.log("컴포넌트가 마운트됨");
     return () => console.log("컴포넌트가 언마운트됨");
   }, [users]);
 
+  const [dispatch, nextId] = useContext(UserDispatch);
+
   return users.map((user) => {
     return (
-      <div key={user.id}>
+      <div key={user.id} className="user">
         <h3
           style={{ cursor: "pointer", color: user.active ? "green" : "black" }}
         >
@@ -30,14 +29,21 @@ const Users = React.memo(function Users({ users, onRemove, hello, onToggle }) {
         <p>{user.email}</p>
         <button
           onClick={() => {
-            onRemove(user.id);
+            nextId.current -= 1;
+            dispatch({
+              type: "DELETE_USER",
+              id: user.id,
+            });
           }}
         >
           delete
         </button>
         <button
           onClick={() => {
-            onToggle(user.id);
+            dispatch({
+              type: "TOGGLE_USER",
+              id: user.id,
+            });
           }}
         >
           onToggle
