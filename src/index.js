@@ -1,11 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-// import Counter from "./Counter";
+import Hello123 from "./exercise";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App></App>
+    <Hello123></Hello123>
   </React.StrictMode>,
   document.getElementById("root")
 );
